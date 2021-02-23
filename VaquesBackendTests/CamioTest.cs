@@ -59,29 +59,29 @@ namespace VaquesBackendTests
             {
                 new object[] {
                     new List<IVaca>() {
-                        new Vaca("", 9, Mock.Of<IRaça>())
+                        new Vaca("", 9, Mock.Of<IRaÃ§a>())
                     },
                     9
                 },
                 new object[] {
                     new List<IVaca>() {
-                        new Vaca("",8, Mock.Of<IRaça>()),
-                        new Vaca("",1, Mock.Of<IRaça>())
+                        new Vaca("",8, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",1, Mock.Of<IRaÃ§a>())
                     },
                     9
                 },
                 new object[] {
                     new List<IVaca>() {
-                        new Vaca("",2, Mock.Of<IRaça>()),
-                        new Vaca("",2, Mock.Of<IRaça>()),
-                        new Vaca("",2, Mock.Of<IRaça>()),
-                        new Vaca("",2, Mock.Of<IRaça>())
+                        new Vaca("",2, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",2, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",2, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",2, Mock.Of<IRaÃ§a>())
                     },
                     8
                 },
                 new object[] {
                     new List<IVaca>() {
-                        new Vaca("",10, Mock.Of<IRaça>())
+                        new Vaca("",10, Mock.Of<IRaÃ§a>())
                     },
                     10
                 },
@@ -114,32 +114,32 @@ namespace VaquesBackendTests
             {
                 new object[] {
                     new List<IVaca>() {
-                        new Vaca("", 11, Mock.Of<IRaça>())
+                        new Vaca("", 11, Mock.Of<IRaÃ§a>())
                     },
                     0
                 },
                 new object[] {
                     new List<IVaca>() {
-                        new Vaca("",8, Mock.Of<IRaça>()),
-                        new Vaca("",3, Mock.Of<IRaça>())
+                        new Vaca("",8, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",3, Mock.Of<IRaÃ§a>())
                     },
                     1
                 },
                 new object[] {
                     new List<IVaca>() {
-                        new Vaca("",2, Mock.Of<IRaça>()),
-                        new Vaca("",8, Mock.Of<IRaça>()),
-                        new Vaca("",2, Mock.Of<IRaça>()),
-                        new Vaca("",2, Mock.Of<IRaça>())
+                        new Vaca("",2, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",8, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",2, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",2, Mock.Of<IRaÃ§a>())
                     },
                     2
                 },
                  new object[] {
                     new List<IVaca>() {
-                        new Vaca("",2, Mock.Of<IRaça>()),
-                        new Vaca("",7, Mock.Of<IRaça>()),
-                        new Vaca("",2, Mock.Of<IRaça>()),
-                        new Vaca("",1, Mock.Of<IRaça>())
+                        new Vaca("",2, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",7, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",2, Mock.Of<IRaÃ§a>()),
+                        new Vaca("",1, Mock.Of<IRaÃ§a>())
                     },
                     3
                 },
