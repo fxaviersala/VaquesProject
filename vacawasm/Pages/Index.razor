@@ -1,0 +1,194 @@
+@namespace vacawasm
+@using vacawasm.Model
+@using System.Text.Json;
+
+@page "/"
+@inherits VaquesData
+@inject IHttpClientFactory _clientFactory
+
+<div class="flex-1 bg-white flex-col sm:flew-row .border-2" id="main">
+    <!-- Columnes -->
+    <div class="flex w-screen bg-white h-screen">
+        <VaquesColumn Amplada="w-1/4" HaveMarca=true Vaques=@Camp ImatgeSuperior=@imatgeCamp OnClick="MouVacaAlCamio" />
+        <VaquesColumnExtended Amplada="w-2/4" Vaques=@Camio ImatgeSuperior=@imatgeCamio OnClick="TornaVacaAlCamp" />
+        <VaquesColumn Amplada="w-1/4" Vaques=@Ciutat ImatgeSuperior=@imatgeCiutat OnClick="NoFacisRes" />
+    </div>
+</div>
+<Peu Litres="@Litres" Viatges=@Viatges OnClick="EnviaLesVaquesALaCiutat" Error=@Error />
+
+
+@code {
+    public async Task<(T, bool)> OnGet<T>(string url)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, url);
+
+        var client = _clientFactory.CreateClient();
+        var response = await client.SendAsync(request);
+
+        using var responseStream = await response.Content.ReadAsStreamAsync();
+        var value = await JsonSerializer.DeserializeAsync<T>(responseStream,
+            new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+        if (response.IsSuccessStatusCode)
+        {
+            return (value, true);
+        }
+        else
+        {
+
+            return (value, false);
+        }
+    }
+
+    public void ShowError(string message = "Error recuperant les vaques")
+    {
+        Error = message;
+        StateHasChanged();
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1);
+        Viatges = 0;
+        Litres = 0;
+        var (vaques, hasData) = await OnGet<IEnumerable<Vaca>>($"{RestServer}/vaques/start/6");
+        if (hasData)
+        {
+
+            Camp = vaques.ToList();
+        }
+        else
+        {
+            ShowError();
+        }
+
+    }
+
+
+
+
+
+    async Task MouVacaAlCamio(string nomVaca)
+    {
+        Error = "";
+        var (valor, hasData) = await OnGet<Result>($"{RestServer}/vaques/posacamio/{nomVaca}");
+        if (hasData)
+        {
+            var (vaques, result) = await OnGet<IEnumerable<Vaca>>($"{RestServer}/vaques/camp");
+            if (result)
+            {
+
+                Camp = vaques.ToList();
+            }
+            else
+            {
+                ShowError();
+            }
+
+            (vaques, result) = await OnGet<IEnumerable<Vaca>>($"{RestServer}/vaques/camio");
+            if (result)
+            {
+
+                Camio = vaques.ToList();
+            }
+            else
+            {
+                ShowError();
+            }
+        }
+        else
+        {
+            Console.WriteLine($"ERROR: {valor.Resultat}");
+            ShowError(valor.Resultat);
+        }
+
+        await Task.Delay(1);
+    }
+
+    async Task TornaVacaAlCamp(string nomVaca)
+    {
+        Error = "";
+        var (valor, hasData) = await OnGet<Result>($"{RestServer}/vaques/posacamp/{nomVaca}");
+        if (hasData)
+        {
+            var (vaques, result) = await OnGet<IEnumerable<Vaca>>($"{RestServer}/vaques/camp");
+            if (result)
+            {
+
+                Camp = vaques.ToList();
+            }
+            else
+            {
+                ShowError();
+            }
+
+            (vaques, result) = await OnGet<IEnumerable<Vaca>>($"{RestServer}/vaques/camio");
+            if (result)
+            {
+
+                Camio = vaques.ToList();
+            }
+            else
+            {
+                ShowError();
+            }
+        }
+        else
+        {
+            ShowError(valor.Resultat);
+        }
+
+        await Task.Delay(1);
+    }
+
+
+    async Task EnviaLesVaquesALaCiutat()
+    {
+        Error = "";
+        if (Camio.Any())
+        {
+            var (litres, resultat) = await OnGet<double>($"{RestServer}/vaques/tocity");
+            if (resultat == true)
+            {
+                var (vaques, result) = await OnGet<IEnumerable<Vaca>>($"{RestServer}/vaques/camio");
+                if (result)
+                {
+                    Camio = vaques.ToList();
+                }
+                else
+                {
+                    ShowError();
+                }
+
+                (vaques, result) = await OnGet<IEnumerable<Vaca>>($"{RestServer}/vaques/ciutat");
+                if (result)
+                {
+
+                    Ciutat = vaques.ToList();
+                }
+                else
+                {
+                    ShowError();
+                }
+                Litres = Litres + litres;
+                Viatges = Viatges + 1;
+            }
+            else
+            {
+                ShowError("Error al comptar la llet");
+            }
+
+            await Task.Delay(1);
+        }
+
+    }
+
+    void NoFacisRes(string x)
+    {
+
+    }
+}

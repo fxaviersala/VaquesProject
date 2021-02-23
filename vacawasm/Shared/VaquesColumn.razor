@@ -1,0 +1,47 @@
+@using vacawasm.Model
+
+<div class=@Amplada>
+    <div class="relative flex flex-col hidden w-full bg-white border-r border-gray-300 shadow-xl md:block transform transition-all duration-500 ease-in-out">
+        <div class="flex justify-between px-3 pt-1 text-white">
+            <div class="flex items-center w-full py-2">
+            <div class="relative flex items-center w-full pl-2 overflow-hidden text-gray-600 focus-within:text-gray-400">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-4">
+                </span>
+            </div>
+            </div>
+        </div>
+        <div class="border-b shadow-bot">
+            <img class="relative flex h-24 object-contain w-full" src=@ImatgeName alt="camp">
+        </div>
+        <div class="relative mt-2 mb-4 overflow-x-hidden overflow-y-auto scrolling-touch lg:max-h-sm scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray">
+            <ul id="vaques-@ImatgeSuperior" class="flex flex-col inline-block w-full px-2 select-none">
+            @foreach (var vaca in Vaques)
+            {
+                <VacaLine HaveMarca=@HaveMarca ImatgeVaca=@ImatgeVaca Vaca=@vaca OnClick="OnClick" />
+            }
+            </ul>
+        </div>
+        </div>
+</div>
+
+@code{
+    [Parameter]
+    public string Amplada { get; set; }
+
+    [Parameter]
+    public string ImatgeSuperior { get; set; }
+
+    public string ImatgeName => $"/img/{ImatgeSuperior}.png";
+
+    [Parameter]
+    public string ImatgeVaca { get; set; } = "/img/vaca.png";
+
+    [Parameter]
+    public bool HaveMarca { get; set; } = false;
+
+    [Parameter]
+    public List<Vaca> Vaques { get; set; } = new List<Vaca>();
+
+    [Parameter] public EventCallback<string> OnClick { get; set; }
+
+}

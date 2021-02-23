@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  frontend:
+    build:
+      context: vacawasm
+      dockerfile: $PWD/Dockerfile-wasm
+    ports:
+      - "3000:80"
+    networks:
+      - xarxa
+  rest:
+    build:
+      context: VaquesBackend
+      dockerfile: $PWD/Dockerfile-Backend
+    ports:
+      - 4567:4567
+    networks:
+      - xarxa
+
+networks:
+  xarxa:

@@ -1,0 +1,29 @@
+@using vacawasm.Model
+
+<div class=@Amplada>
+    <div class="flex">
+        <div class="w-1/4"></div>
+        <VaquesColumn Amplada="w-2/4" Vaques=@Vaques ImatgeSuperior=@ImatgeSuperior OnClick="OnClick" />
+        <div class="w-1/4"></div>
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public string Amplada { get; set; }
+
+    [Parameter]
+    public string ImatgeSuperior { get; set; }
+
+    [Parameter]
+    public string ImatgeVaca { get; set; } = "/img/vaca.png";
+
+    [Parameter]
+    public bool HaveMarca { get; set; } = false;
+
+    [Parameter]
+    public List<Vaca> Vaques { get; set; } = new List<Vaca>();
+
+    [Parameter] public EventCallback<string> OnClick { get; set; }
+
+}

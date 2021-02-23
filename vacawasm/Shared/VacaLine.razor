@@ -1,0 +1,41 @@
+@using vacawasm.Model
+
+<li id="vaca-@Vaca.Nom" class="flex flex-no-wrap items-center pr-3 text-black rounded-lg cursor-pointer mt-200 py-65 hover:bg-gray-200" style="padding-top: 0.65rem; padding-bottom: 0.65rem">
+    <div class="flex justify-between w-full focus:outline-none"  @onclick="()=> OnClick.InvokeAsync(Vaca.Nom)" >
+        <div class="flex justify-between w-full">
+            <div class="relative flex items-center justify-center w-12 h-12 ml-2 mr-3 text-xl font-semibold text-white bg-gray-300 rounded-full flex-no-shrink">
+            <img class="object-cover w-12 h-12 rounded-full" src=@ImatgeVaca alt="">
+            @if (HaveMarca) {
+            <div class="absolute bottom-0 right-0 flex items-center justify-center bg-white rounded-full" style="width: 0.80rem; height: 0.80rem">
+                <div class="bg-green-500 rounded-full" style="width: 0.6rem; height: 0.6rem"></div>
+            </div>
+            }
+            </div>
+            <div class="items-center flex-1 min-w-0">
+            <div class="flex justify-between mb-1">
+                <h2 class="text-sm font-semibold text-black">@Vaca.Nom</h2>
+                <div class="flex">
+                <span class="ml-1 text-xs font-medium text-gray-600">@Vaca.Pes Kg</span>
+                </div>
+            </div>
+            <div class="flex justify-between text-sm leading-none truncate">
+                <span>@Vaca.Raça.Nom</span>
+            </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+@code {
+    [Parameter]
+    public Vaca Vaca { get; set; }
+
+    [Parameter]
+    public string ImatgeVaca { get; set; }
+
+    [Parameter]
+    public bool HaveMarca { get; set; }
+
+
+    [Parameter] public EventCallback<string> OnClick { get; set; }
+}
