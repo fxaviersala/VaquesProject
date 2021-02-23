@@ -27,7 +27,7 @@ namespace VaquesBackend.Controllers
 
         [HttpGet]
         [Route("start/{num}")]
-        public IEnumerable<Vaca> IniciaCamp(int num)
+        public IEnumerable<IVaca> IniciaCamp(int num)
         {
             _campService.init(num);
             return _campService.getCasa();
@@ -35,20 +35,20 @@ namespace VaquesBackend.Controllers
 
         [HttpGet]
         [Route("camp")]
-        public IEnumerable<Vaca> GetVaquesDelCamp()
+        public IEnumerable<IVaca> GetVaquesDelCamp()
         {
             return _campService.getCasa();
         }
 
         [HttpGet("camio")]
-        public IEnumerable<Vaca> GetVaquesDelCamio()
+        public IEnumerable<IVaca> GetVaquesDelCamio()
         {
             return _campService.getCamio();
         }
 
 
         [HttpGet("ciutat")]
-        public IEnumerable<Vaca> GetVaquesDeLaCiutat()
+        public IEnumerable<IVaca> GetVaquesDeLaCiutat()
         {
             return _campService.getCiutat();
         }

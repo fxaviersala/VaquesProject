@@ -11,15 +11,15 @@ namespace VaquesBackend.Services {
     {
         IVaquesRepository servei;
 
-        List<Vaca> Camp;
-        List<Vaca> Ciutat;
+        List<IVaca> Camp;
+        List<IVaca> Ciutat;
         Camio camio;
 
         public CampService()
         {
             this.servei = new MemoryVaquesRepository();
             Camp = servei.GetVaques(6).ToList();
-            Ciutat = new List<Vaca>();
+            Ciutat = new List<IVaca>();
             camio = new Camio(1000);
         }
 
@@ -34,7 +34,7 @@ namespace VaquesBackend.Services {
             {
                 Camp = servei.GetVaques(numVaques).ToList();
                 camio = new Camio(1000);
-                Ciutat = new List<Vaca>();
+                Ciutat = new List<IVaca>();
             }
             catch (VaquesException)
             {
@@ -42,17 +42,17 @@ namespace VaquesBackend.Services {
             }
         }
 
-        public List<Vaca> getCasa()
+        public List<IVaca> getCasa()
         {
             return Camp;
         }
 
-        public List<Vaca> getCiutat()
+        public List<IVaca> getCiutat()
         {
             return Ciutat;
         }
 
-        public List<Vaca> getCamio()
+        public List<IVaca> getCamio()
         {
             return camio.Vaques;
         }
@@ -67,7 +67,7 @@ namespace VaquesBackend.Services {
 
         public bool PosaVacaAlCamio(string nom)
         {
-            Vaca vaca = Camp
+            IVaca vaca = Camp
                     .FirstOrDefault(v => v.Nom.ToLower() == nom.ToLower());
             if (vaca == null)
             {
@@ -83,7 +83,7 @@ namespace VaquesBackend.Services {
 
         public bool PosaVacaAlCamp(string nom)
         {
-            Vaca vaca = camio.Vaques
+            IVaca vaca = camio.Vaques
                     .FirstOrDefault(v => v.Nom.ToLower() == nom.ToLower());
             if (vaca == null) return false;
             camio.SurtVaca(vaca);

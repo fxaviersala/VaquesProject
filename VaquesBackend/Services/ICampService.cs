@@ -6,9 +6,9 @@ namespace VaquesBackend.Services
     public interface ICampService
     {
         double CamioACiutat();
-        List<Vaca> getCamio();
-        List<Vaca> getCasa();
-        List<Vaca> getCiutat();
+        List<IVaca> getCamio();
+        List<IVaca> getCasa();
+        List<IVaca> getCiutat();
         void init(int numVaques);
         bool PosaVacaAlCamio(string nom);
         bool PosaVacaAlCamp(string nom);

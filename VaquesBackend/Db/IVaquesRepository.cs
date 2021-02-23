@@ -3,6 +3,6 @@ using VaquesBackend.Models;
 
 namespace VaquesBackend.Db {
     public interface IVaquesRepository {
-        IEnumerable<Vaca> GetVaques(int numVaques);
+        IEnumerable<IVaca> GetVaques(int numVaques);
     }
 }

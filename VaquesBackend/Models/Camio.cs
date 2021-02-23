@@ -7,16 +7,16 @@ namespace VaquesBackend.Models {
 
         public double PesActual { get; private set;}
         public double Litres { get; private set;}
-        public List<Vaca> Vaques { get; }
+        public List<IVaca> Vaques { get; }
 
         public Camio(double maxPes) {
             MaxPes = maxPes;
             PesActual = 0;
             Litres = 0;
-            Vaques = new List<Vaca>();
+            Vaques = new List<IVaca>();
         }
 
-        public bool EntraVaca(Vaca vaca) {
+        public bool EntraVaca(IVaca vaca) {
             if (PesActual + vaca.Pes <= MaxPes) {
                 PesActual += vaca.Pes;
                 Litres += vaca.Litres();
@@ -32,7 +32,7 @@ namespace VaquesBackend.Models {
             Vaques.Clear();
         }
 
-        public void SurtVaca(Vaca vaca) {
+        public void SurtVaca(IVaca vaca) {
             PesActual -= vaca.Pes;
             Litres -= vaca.Litres();
             Vaques.Remove(vaca);
