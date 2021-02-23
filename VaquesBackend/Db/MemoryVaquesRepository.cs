@@ -23,7 +23,15 @@ namespace VaquesBackend.Db {
                 new Vaca("Marta", 280.2, races[2]),
                 new Vaca("Manoli", 250.5, races[1]),
                 new Vaca("Piguellada", 200.1, races[0]),
-                new Vaca("Tigressa", 267, races[1]),            
+                new Vaca("Tigressa", 267, races[1]),
+                new Vaca("Perla", 289.3, races[0]),
+                new Vaca("Maca", 212.4, races[1]),
+                new Vaca("Guenya", 243.6, races[2]),
+                new Vaca("Boirosa", 165.9, races[0]),
+                new Vaca("Cega", 311, races[3]),
+                new Vaca("Mola", 361.2, races[0]),
+                new Vaca("Justa", 300, races[0]),
+                new Vaca("Rapada", 278.5, races[1]),
         };
 
         public IEnumerable<IVaca> GetVaques(int quantes) 
