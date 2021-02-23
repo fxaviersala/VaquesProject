@@ -16,12 +16,12 @@ Fa servir:
 Per clonar el projecte s'han de descarregar els mòduls. La forma més senzilla és executar:
 
 ```bash
-git clone --recurse-submodules https://github.com/CursEines/VaquesUITests.git
+git clone  https://github.com/fxaviersala/VaquesProject.git
 ```
 
-## Tests
+## Tests d'interfície d'usuari
 
-Per executar els tests n'hi ha prou amb `dotnet test`.
+Per executar els tests d'interfície d'usuari n'hi ha prou amb `dotnet test` des del directori de tests
 
 ```bash
 $ dotnet test
