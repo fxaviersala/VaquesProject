@@ -24,9 +24,8 @@ namespace VaquesTest
             options.AddArguments("--disable-dev-shm-usage");
             options.AddArgument("--whitelisted-ips");
             options.AddArgument("--no-sandbox");
-            options.AddArgument("headless");
             options.SetLoggingPreference(LogType.Browser, LogLevel.All);
-            var headLess = false;
+            var headLess = true;
 
             if (headLess)
             {
