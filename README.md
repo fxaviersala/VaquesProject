@@ -23,7 +23,7 @@ git clone  https://github.com/fxaviersala/VaquesProject.git
 
 ## L'aplicació 
 
-L'aplicació està formada per dos components un backend `VaquesBackend`  i un frontend `vaqueswasm` que li demana dades. Per tant, per tenir algun tipus d'informació els hem d'iniciar tots dos i obrir el navegador: http://localhost:3000
+L'aplicació està formada per dos components un backend `VaquesBackend`  i un frontend `vaqueswasm` que li demana dades. Per tant, per tenir algun tipus d'informació els hem d'iniciar tots dos i obrir el navegador
 
 ## Tests unitaris
 
