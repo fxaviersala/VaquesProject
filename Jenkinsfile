@@ -16,7 +16,7 @@ pipeline {
             stages {
                 stage("Iniciar el sistema") {
                     steps {
-                        sh "docker-compose -d"
+                        sh "docker-compose up -d"
                     }
                 }
                 stage("Executa tests UI") {
